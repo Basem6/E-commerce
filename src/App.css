@@ -1,6 +1,7 @@
 @import "tailwindcss";
 *{
   font-family:"Inter";
+  /* outline: red solid 1px; */
 }
 .link{
   position: relative;

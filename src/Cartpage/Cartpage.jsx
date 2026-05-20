@@ -225,7 +225,7 @@ export default function CartPage() {
                     {/* Buttons */}
                     <div className="flex flex-col gap-4">
                     <Link to={"/checkout"}>
-                        <button className="w-full bg-[#111111] text-white py-4 rounded-2xl text-lg font-medium hover:opacity-90 hover:scale-[1.01] active:scale-[0.98] transition-all duration-300">
+                        <button className={'w-full bg-[#111111] text-white py-4 rounded-2xl text-lg font-medium hover:opacity-90 hover:scale-[1.01] active:scale-[0.98] transition-all duration-300' + (cartItems.length === 0 ? ' cursor-not-allowed  hover:bg-black/50  opacity-50 text-[#111111]' : '')} disabled={cartItems.length === 0}>
                             Proceed to Checkout
                         </button>
                     </Link>
