@@ -6,6 +6,12 @@ body {
   width: 100%;
   overscroll-behavior-x: none;
   touch-action: pan-y;
+  transition: overflow 0.3s ease;
+}
+
+/* Prevent scrolling when mobile menu is open */
+body.menu-open {
+  overflow: hidden;
 }
 
 * {
