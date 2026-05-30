@@ -1,15 +1,15 @@
 export default function LoginPage() {
     return (
-        <main className="min-h-screen max-h-screen flex items-center justify-center relative overflow-hidden px-4 bg-white">
+        <main className="min-h-screen max-h-screen flex items-center justify-center relative overflow-hidden px-4" style={{ backgroundColor: '#0D0D0D' }}>
             <div className="w-full max-w-[480px] my-12">
-                <div className="backdrop-blur-xl bg-white/80 rounded-2xl shadow-[0px_10px_40px_rgba(59,130,246,0.15)] border border-blue-100 overflow-hidden">
-                <div className="flex border-b border-blue-100">
+                <div className="backdrop-blur-xl rounded-2xl shadow-[0px_10px_40px_rgba(0,0,0,0.5)] border overflow-hidden" style={{ backgroundColor: 'rgba(26,26,26,0.9)', borderColor: 'rgba(200,168,130,0.2)' }}>
+                <div className="flex border-b" style={{ borderColor: 'rgba(200,168,130,0.2)' }}>
 
-                    <button className="flex-1 py-5 text-center text-sm font-semibold border-b-2 border-blue-500 text-blue-600 transition-all duration-200">
+                    <button className="flex-1 py-5 text-center text-sm font-semibold border-b-2 transition-all duration-200" style={{ color: '#C8A882', borderColor: '#C8A882' }}>
                     Sign In
                     </button>
 
-                    <button className="flex-1 py-5 text-center text-sm font-semibold border-b-2 border-transparent text-gray-400 hover:text-gray-700 hover:bg-blue-50 transition-all duration-200">
+                    <button className="flex-1 py-5 text-center text-sm font-semibold border-b-2 border-transparent transition-all duration-200" style={{ color: 'rgba(200,168,130,0.5)' }}>
                     Create Account
                     </button>
 
@@ -18,30 +18,31 @@ export default function LoginPage() {
                 <div className="p-6 md:p-8">
                     <div className="mb-8 text-center">
 
-                    <h1 className="text-3xl font-bold text-gray-900 mb-2">
+                    <h1 className="text-3xl font-bold mb-2" style={{ color: '#F0ECE4', fontFamily: "'Playfair Display', serif" }}>
                         Welcome Back
                     </h1>
 
-                    <p className="text-gray-500">
+                    <p style={{ color: 'rgba(240,236,228,0.6)' }}>
                         Please enter your details to access your account.
                     </p>
 
                     </div>
                     <div className="relative mb-6 flex items-center">
-                    <div className="flex-grow border-t border-gray-200"></div>
+                    <div className="flex-grow border-t" style={{ borderColor: 'rgba(200,168,130,0.2)' }}></div>
 
-                    <span className="mx-4 text-xs uppercase tracking-[3px] text-gray-400">
+                    <span className="mx-4 text-xs uppercase tracking-[3px]" style={{ color: 'rgba(200,168,130,0.5)' }}>
                         or continue with email
                     </span>
 
-                    <div className="flex-grow border-t border-gray-200"></div>
+                    <div className="flex-grow border-t" style={{ borderColor: 'rgba(200,168,130,0.2)' }}></div>
 
                     </div>
                     <form className="space-y-6">
                     <div className="space-y-2">
                         <label
                         htmlFor="email"
-                        className="block text-sm font-medium text-gray-700"
+                        className="block text-sm font-medium"
+                        style={{ color: 'rgba(200,168,130,0.8)' }}
                         >
                         Email Address
                         </label>
@@ -50,7 +51,8 @@ export default function LoginPage() {
                         type="email"
                         id="email"
                         placeholder="name@company.com"
-                        className="w-full px-4 py-3.5 rounded-xl bg-white border border-gray-200 text-gray-800 focus:border-blue-500 focus:ring-4 focus:ring-blue-100 outline-none transition-all duration-200 placeholder:text-gray-400"
+                        className="w-full px-4 py-3.5 rounded-xl outline-none transition-all duration-200"
+                        style={{ backgroundColor: 'rgba(200,168,130,0.05)', borderColor: 'rgba(200,168,130,0.2)', border: '1px solid', color: '#F0ECE4' }}
                         />
 
                     </div>
@@ -60,14 +62,16 @@ export default function LoginPage() {
 
                         <label
                             htmlFor="password"
-                            className="block text-sm font-medium text-gray-700"
+                            className="block text-sm font-medium"
+                            style={{ color: 'rgba(200,168,130,0.8)' }}
                         >
                             Password
                         </label>
 
                         <a
                             href="#"
-                            className="text-sm text-blue-600 hover:underline"
+                            className="text-sm hover:underline"
+                            style={{ color: '#C8A882' }}
                         >
                             Forgot?
                         </a>
@@ -80,12 +84,14 @@ export default function LoginPage() {
                             type="password"
                             id="password"
                             placeholder="••••••••"
-                            className="w-full px-4 py-3.5 rounded-xl bg-white border border-gray-200 text-gray-800 focus:border-blue-500 focus:ring-4 focus:ring-blue-100 outline-none transition-all duration-200 placeholder:text-gray-400"
+                            className="w-full px-4 py-3.5 rounded-xl outline-none transition-all duration-200"
+                            style={{ backgroundColor: 'rgba(200,168,130,0.05)', borderColor: 'rgba(200,168,130,0.2)', border: '1px solid', color: '#F0ECE4' }}
                         />
 
                         <button
                             type="button"
-                            className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-700 transition-colors"
+                            className="absolute right-4 top-1/2 -translate-y-1/2 transition-colors"
+                            style={{ color: 'rgba(200,168,130,0.6)' }}
                         >
                             <span className="material-symbols-outlined text-[20px]">
                             visibility
@@ -102,12 +108,14 @@ export default function LoginPage() {
                         <input
                         type="checkbox"
                         id="remember"
-                        className="w-4 h-4 accent-blue-600"
+                        className="w-4 h-4"
+                        style={{ accentColor: '#C8A882' }}
                         />
 
                         <label
                         htmlFor="remember"
-                        className="text-sm text-gray-500 select-none"
+                        className="text-sm select-none"
+                        style={{ color: 'rgba(200,168,130,0.6)' }}
                         >
                         Remember me for 30 days
                         </label>
@@ -117,7 +125,8 @@ export default function LoginPage() {
                     {/* Submit */}
                     <button
                         type="submit"
-                        className="w-full py-4 rounded-xl bg-blue-600 text-white font-semibold shadow-lg shadow-blue-200 hover:bg-blue-700 hover:scale-[1.01] active:scale-[0.98] transition-all duration-200"
+                        className="w-full py-4 rounded-xl text-white font-semibold hover:scale-[1.01] active:scale-[0.98] transition-all duration-200"
+                        style={{ backgroundColor: '#C8A882', color: '#0D0D0D' }}
                     >
                         Sign In
                     </button>
@@ -127,12 +136,13 @@ export default function LoginPage() {
                     {/* Footer */}
                     <div className="mt-6 text-center">
 
-                    <p className="text-gray-500">
+                    <p style={{ color: 'rgba(240,236,228,0.6)' }}>
                         New here?{" "}
 
                         <a
                         href="#"
-                        className="text-blue-600 font-semibold hover:underline"
+                        className="font-semibold hover:underline"
+                        style={{ color: '#C8A882' }}
                         >
                         Create account
                         </a>
@@ -146,7 +156,7 @@ export default function LoginPage() {
                 </div>
 
                 {/* Bottom Trust */}
-                <div className="mt-6 flex justify-center gap-8 text-gray-400">
+                <div className="mt-6 flex justify-center gap-8" style={{ color: 'rgba(200,168,130,0.5)' }}>
 
                 <div className="flex items-center gap-2">
 

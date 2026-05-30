@@ -29,7 +29,7 @@ import styled from 'styled-components';
 
     const StyledWrapper = styled.div`
     .heart-container {
-        --heart-color: rgb(91, 173, 255);
+        --heart-color: #C8A882;
         position: relative;
         width: 30px;
         height: 30px;

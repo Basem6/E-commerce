@@ -18,22 +18,22 @@ export default function Checkout() {
         return item.addtocard===true
     })
     return (
-        <main className="max-w-[1400px] mx-auto px-4 md:px-8 pt-12 pb-24 bg-[#f8f8f7] min-h-screen text-[#111]">
+        <main className="max-w-[1400px] mx-auto px-4 md:px-8 pt-12 pb-24 min-h-screen" style={{ backgroundColor: '#0D0D0D', color: '#F0ECE4' }}>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             {/* Left Side */}
             <div className="lg:col-span-8 space-y-10">
             
             {/* Shipping */}
             <section>
-                <h1 className="text-4xl font-bold mb-8">Checkout</h1>
+                <h1 className="text-4xl font-bold mb-8" style={{ fontFamily: "'Playfair Display', serif", color: '#F0ECE4' }}>Checkout</h1>
 
-                <div className="bg-[#ffffff] rounded-2xl p-8 shadow-sm border border-[#ececec]">
+                <div className="rounded-2xl p-8 shadow-sm" style={{ backgroundColor: '#1a1a1a', borderColor: 'rgba(200,168,130,0.2)', border: '1px solid' }}>
                 <div className="flex items-center gap-4 mb-8">
-                    <span className="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center text-sm font-bold">
+                    <span className="w-8 h-8 rounded-full text-white flex items-center justify-center text-sm font-bold" style={{ backgroundColor: '#C8A882', color: '#0D0D0D' }}>
                     1
                     </span>
 
-                    <h2 className="text-2xl font-semibold">
+                    <h2 className="text-2xl font-semibold" style={{ color: '#F0ECE4' }}>
                     Shipping Information
                     </h2>
                 </div>
@@ -41,62 +41,67 @@ export default function Checkout() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     
                     <div className="space-y-2">
-                    <label className="text-sm text-[#777] block">
+                    <label className="text-sm block" style={{ color: 'rgba(200,168,130,0.6)' }}>
                         First Name
                     </label>
 
                     <input
                         type="text"
                         placeholder="John"
-                        className="w-full bg-[#fafafa] border border-[#e5e5e5] focus:border-black rounded-xl px-4 py-3 outline-none transition-all"
+                        className="w-full rounded-xl px-4 py-3 outline-none transition-all"
+                        style={{ backgroundColor: 'rgba(200,168,130,0.05)', borderColor: 'rgba(200,168,130,0.2)', border: '1px solid', color: '#F0ECE4' }}
                     />
                     </div>
 
                     <div className="space-y-2">
-                    <label className="text-sm text-[#777] block">
+                    <label className="text-sm block" style={{ color: 'rgba(200,168,130,0.6)' }}>
                         Last Name
                     </label>
 
                     <input
                         type="text"
                         placeholder="Doe"
-                        className="w-full bg-[#fafafa] border border-[#e5e5e5] focus:border-black rounded-xl px-4 py-3 outline-none transition-all"
+                        className="w-full rounded-xl px-4 py-3 outline-none transition-all"
+                        style={{ backgroundColor: 'rgba(200,168,130,0.05)', borderColor: 'rgba(200,168,130,0.2)', border: '1px solid', color: '#F0ECE4' }}
                     />
                     </div>
 
                     <div className="md:col-span-2 space-y-2">
-                    <label className="text-sm text-[#777] block">
+                    <label className="text-sm block" style={{ color: 'rgba(200,168,130,0.6)' }}>
                         Address
                     </label>
 
                     <input
                         type="text"
                         placeholder="123 Luxury Ave"
-                        className="w-full bg-[#fafafa] border border-[#e5e5e5] focus:border-black rounded-xl px-4 py-3 outline-none transition-all"
+                        className="w-full rounded-xl px-4 py-3 outline-none transition-all"
+                        style={{ backgroundColor: 'rgba(200,168,130,0.05)', borderColor: 'rgba(200,168,130,0.2)', border: '1px solid', color: '#F0ECE4' }}
                     />
                     </div>
 
                     <div className="space-y-2">
-                    <label className="text-sm text-[#777] block">
+                    <label className="text-sm block" style={{ color: 'rgba(200,168,130,0.6)' }}>
                         City
                     </label>
 
                     <input
                         type="text"
                         placeholder="New York"
-                        className="w-full bg-[#fafafa] border border-[#e5e5e5] focus:border-black rounded-xl px-4 py-3 outline-none transition-all"
+                        className="w-full rounded-xl px-4 py-3 outline-none transition-all"
+                        style={{ backgroundColor: 'rgba(200,168,130,0.05)', borderColor: 'rgba(200,168,130,0.2)', border: '1px solid', color: '#F0ECE4' }}
                     />
                     </div>
 
                     <div className="space-y-2">
-                    <label className="text-sm text-[#777] block">
+                    <label className="text-sm block" style={{ color: 'rgba(200,168,130,0.6)' }}>
                         Postal Code
                     </label>
 
                     <input
                         type="text"
                         placeholder="10001"
-                        className="w-full bg-[#fafafa] border border-[#e5e5e5] focus:border-black rounded-xl px-4 py-3 outline-none transition-all"
+                        className="w-full rounded-xl px-4 py-3 outline-none transition-all"
+                        style={{ backgroundColor: 'rgba(200,168,130,0.05)', borderColor: 'rgba(200,168,130,0.2)', border: '1px solid', color: '#F0ECE4' }}
                     />
                     </div>
                 </div>
@@ -105,14 +110,14 @@ export default function Checkout() {
 
             {/* Payment */}
             <section>
-                <div className="bg-white rounded-2xl p-8 shadow-sm border border-[#ececec]">
+                <div className="rounded-2xl p-8 shadow-sm" style={{ backgroundColor: '#1a1a1a', borderColor: 'rgba(200,168,130,0.2)', border: '1px solid' }}>
                 
                 <div className="flex items-center gap-4 mb-8">
-                    <span className="w-8 h-8 rounded-full bg-[#f1f1f1] text-black flex items-center justify-center text-sm font-bold">
+                    <span className="w-8 h-8 rounded-full text-white flex items-center justify-center text-sm font-bold" style={{ backgroundColor: 'rgba(200,168,130,0.2)', color: '#C8A882' }}>
                     2
                     </span>
 
-                    <h2 className="text-2xl font-semibold">
+                    <h2 className="text-2xl font-semibold" style={{ color: '#F0ECE4' }}>
                     Payment Details
                     </h2>
                 </div>
@@ -120,7 +125,7 @@ export default function Checkout() {
                 <div className="space-y-6">
                     
                     <div className="space-y-2">
-                    <label className="text-sm text-[#777] block">
+                    <label className="text-sm block" style={{ color: 'rgba(200,168,130,0.6)' }}>
                         Card Number
                     </label>
 
@@ -128,10 +133,11 @@ export default function Checkout() {
                         <input
                         type="text"
                         placeholder="0000 0000 0000 0000"
-                        className="w-full bg-[#fafafa] border border-[#e5e5e5] focus:border-black rounded-xl pl-4 pr-12 py-3 outline-none transition-all"
+                        className="w-full rounded-xl pl-4 pr-12 py-3 outline-none transition-all"
+                        style={{ backgroundColor: 'rgba(200,168,130,0.05)', borderColor: 'rgba(200,168,130,0.2)', border: '1px solid', color: '#F0ECE4' }}
                         />
 
-                        <span className="absolute right-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-[#999]">
+                        <span className="absolute right-4 top-1/2 -translate-y-1/2 material-symbols-outlined" style={{ color: 'rgba(200,168,130,0.4)' }}>
                         credit_card
                         </span>
                     </div>
@@ -140,34 +146,36 @@ export default function Checkout() {
                     <div className="grid grid-cols-2 gap-6">
                     
                     <div className="space-y-2">
-                        <label className="text-sm text-[#777] block">
+                        <label className="text-sm block" style={{ color: 'rgba(200,168,130,0.6)' }}>
                         Expiry Date
                         </label>
 
                         <input
                         type="text"
                         placeholder="MM/YY"
-                        className="w-full bg-[#fafafa] border border-[#e5e5e5] focus:border-black rounded-xl px-4 py-3 outline-none transition-all"
+                        className="w-full rounded-xl px-4 py-3 outline-none transition-all"
+                        style={{ backgroundColor: 'rgba(200,168,130,0.05)', borderColor: 'rgba(200,168,130,0.2)', border: '1px solid', color: '#F0ECE4' }}
                         />
                     </div>
 
                     <div className="space-y-2">
-                        <label className="text-sm text-[#777] block">
+                        <label className="text-sm block" style={{ color: 'rgba(200,168,130,0.6)' }}>
                         CVV
                         </label>
 
                         <input
                         type="password"
                         placeholder="***"
-                        className="w-full bg-[#fafafa] border border-[#e5e5e5] focus:border-black rounded-xl px-4 py-3 outline-none transition-all"
+                        className="w-full rounded-xl px-4 py-3 outline-none transition-all"
+                        style={{ backgroundColor: 'rgba(200,168,130,0.05)', borderColor: 'rgba(200,168,130,0.2)', border: '1px solid', color: '#F0ECE4' }}
                         />
                     </div>
                     </div>
 
                     {/* Security */}
-                    <div className="pt-6 flex flex-wrap items-center gap-6 border-t border-[#eee]">
+                    <div className="pt-6 flex flex-wrap items-center gap-6" style={{ borderTop: '1px solid rgba(200,168,130,0.2)' }}>
                     
-                    <div className="flex items-center gap-2 text-[#666]">
+                    <div className="flex items-center gap-2" style={{ color: 'rgba(200,168,130,0.6)' }}>
                         <span className="material-symbols-outlined text-[18px]">
                         lock
                         </span>
@@ -177,7 +185,7 @@ export default function Checkout() {
                         </span>
                     </div>
 
-                    <div className="flex items-center gap-2 text-[#666]">
+                    <div className="flex items-center gap-2" style={{ color: 'rgba(200,168,130,0.6)' }}>
                         <span className="material-symbols-outlined text-[18px]">
                         verified
                         </span>
@@ -194,9 +202,9 @@ export default function Checkout() {
             {/* Right Side */}
             <aside className="lg:col-span-4 sticky top-24">
             
-            <div className="bg-white rounded-2xl p-8 border border-[#ececec] shadow-sm">
+            <div className="rounded-2xl p-8 shadow-sm" style={{ backgroundColor: '#1a1a1a', borderColor: 'rgba(200,168,130,0.2)', border: '1px solid' }}>
                 
-                <h3 className="text-2xl font-semibold mb-6">
+                <h3 className="text-2xl font-semibold mb-6" style={{ color: '#F0ECE4' }}>
                 Order Summary
                 </h3>
 
@@ -204,7 +212,7 @@ export default function Checkout() {
                     {cartItems.map((item, index) => (
                         <div key={index} className="flex gap-4">
                             
-                            <div className="w-20 h-20 rounded-xl overflow-hidden bg-[#f5f5f5] shrink-0">
+                            <div className="w-20 h-20 rounded-xl overflow-hidden shrink-0" style={{ backgroundColor: '#0D0D0D' }}>
                             <img
                                 src={item.img}
                                 alt={item.title}
@@ -214,15 +222,15 @@ export default function Checkout() {
                             </div>
 
                             <div className="flex-grow">
-                            <p className="font-medium">
+                            <p className="font-medium" style={{ color: '#F0ECE4' }}>
                                 {item.title}
                             </p>
 
-                            <p className="text-sm text-[#777] mt-1">
+                            <p className="text-sm mt-1" style={{ color: 'rgba(200,168,130,0.6)' }}>
                                 Qty: {item.countincart}
                             </p>
 
-                            <p className="font-bold mt-1">
+                            <p className="font-bold mt-1" style={{ color: '#F0ECE4' }}>
                                 ${getPriceAfterDiscount(item.price, item.Discount)}
                             </p>
                             </div>
@@ -231,43 +239,43 @@ export default function Checkout() {
                     ))}
                 </div>
                 {/* Price */}
-                <div className="space-y-4 pt-6 border-t border-[#eee]">
+                <div className="space-y-4 pt-6" style={{ borderTop: '1px solid rgba(200,168,130,0.2)' }}>
                 
                 <div className="flex justify-between">
-                    <span className="text-[#777]">
+                    <span style={{ color: 'rgba(200,168,130,0.6)' }}>
                     Subtotal
                     </span>
 
-                    <span className="font-medium">
+                    <span className="font-medium" style={{ color: '#F0ECE4' }}>
                     {total}
                     </span>
                 </div>
 
                 <div className="flex justify-between">
-                    <span className="text-[#777]">
+                    <span style={{ color: 'rgba(200,168,130,0.6)' }}>
                     Shipping
                     </span>
 
-                    <span className="font-medium">
+                    <span className="font-medium" style={{ color: '#F0ECE4' }}>
                     Free
                     </span>
                 </div>
-                <div className="flex justify-between pt-4 border-t border-[#eee]">
-                    <span className="text-2xl font-bold">
+                <div className="flex justify-between pt-4" style={{ borderTop: '1px solid rgba(200,168,130,0.2)' }}>
+                    <span className="text-2xl font-bold" style={{ color: '#F0ECE4' }}>
                     Total
                     </span>
 
-                    <span className="text-2xl font-bold">
+                    <span className="text-2xl font-bold" style={{ color: '#F0ECE4' }}>
                     ${total}
                     </span>
                 </div>
                 </div>
 
-                <button className="w-full mt-8 bg-black text-white py-4 rounded-full font-semibold hover:scale-[1.02] transition-all duration-200">
+                <button className="w-full mt-8 py-4 rounded-full font-semibold hover:scale-[1.02] transition-all duration-200" style={{ backgroundColor: '#C8A882', color: '#0D0D0D' }}>
                 Complete Purchase
                 </button>
 
-                <p className="text-center text-sm text-[#777] mt-4 px-4">
+                <p className="text-center text-sm mt-4 px-4" style={{ color: 'rgba(200,168,130,0.6)' }}>
                 By clicking "Complete Purchase", you agree to our Terms &
                 Conditions and Privacy Policy.
                 </p>

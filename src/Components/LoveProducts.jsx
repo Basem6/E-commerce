@@ -73,13 +73,13 @@ export default function WishlistPage() {
                     <Button onClick={confirmAgree}>Agree</Button>
                     </DialogActions>
         </Dialog>
-        <main className="max-w-7xl mx-auto px-4 md:px-8 pt-16 pb-24 bg-white min-h-screen overflow-hidden">
+        <main className="max-w-7xl mx-auto px-4 md:px-8 pt-16 pb-24 min-h-screen overflow-hidden" style={{ backgroundColor: '#0D0D0D' }}>
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
             <div>
-            <h1 className="text-4xl font-bold text-gray-900">
+            <h1 className="text-4xl font-bold" style={{ color: '#F0ECE4', fontFamily: "'Playfair Display', serif" }}>
                 My Wishlist
             </h1>
-            <p className="text-gray-500 mt-2">
+            <p className="mt-2" style={{ color: 'rgba(240,236,228,0.6)' }}>
                 {products.length} items saved to your collection
             </p>
             </div>

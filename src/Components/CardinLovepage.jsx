@@ -3,10 +3,11 @@ import { getPriceAfterDiscount } from '../utils/priceUtils';
 export function CardLove({product , handleClickOpen , keye , handleAddtocard}){
     return(
         <div
-                className="group relative flex flex-col bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-[0px_6px_30px_rgba(0,0,0,0.05)] hover:shadow-[0px_12px_40px_rgba(59,130,246,0.12)] transition-all duration-300"
+                className="group relative flex flex-col rounded-2xl overflow-hidden border shadow-[0px_6px_30px_rgba(0,0,0,0.3)] hover:shadow-[0px_12px_40px_rgba(200,168,130,0.2)] transition-all duration-300"
+                style={{ backgroundColor: '#1a1a1a', borderColor: 'rgba(200,168,130,0.2)' }}
             >
                 {/* Image */}
-                <div className="relative aspect-[4/5] overflow-hidden bg-gray-100">
+                <div className="relative aspect-[4/5] overflow-hidden" style={{ backgroundColor: '#0D0D0D' }}>
                 <img
                     src={product.img}
                     alt={product.name}
@@ -15,7 +16,7 @@ export function CardLove({product , handleClickOpen , keye , handleAddtocard}){
                 />
 
                 {/* Delete */}
-                <button className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/80 backdrop-blur-md flex items-center justify-center text-gray-500 hover:text-red-500 shadow-md transition-all duration-200" onClick={()=>{handleClickOpen(keye)}}>
+                <button className="absolute top-4 right-4 w-10 h-10 rounded-full flex items-center justify-center shadow-md transition-all duration-200" style={{ backgroundColor: 'rgba(200,168,130,0.1)', backdropFilter: 'blur(4px)', color: 'rgba(200,168,130,0.6)' }} onClick={()=>{handleClickOpen(keye)}}>
 
                     <span className="material-symbols-outlined">
                     delete
@@ -30,22 +31,22 @@ export function CardLove({product , handleClickOpen , keye , handleAddtocard}){
 
                 <div className="flex justify-between items-start mb-2">
 
-                    <h3 className="text-lg font-semibold text-gray-900">
+                    <h3 className="text-lg font-semibold" style={{ color: '#F0ECE4' }}>
                     {product.name}
                     </h3>
 
-                    <span className="font-bold text-blue-600">
+                    <span className="font-bold" style={{ color: '#C8A882' }}>
                     ${getPriceAfterDiscount(product.price, product.Discount)}
                     </span>
 
                 </div>
 
-                <p className="text-xs uppercase tracking-[3px] text-gray-400 mb-6">
+                <p className="text-xs uppercase tracking-[3px] mb-6" style={{ color: 'rgba(200,168,130,0.6)' }}>
                     {product.category}
                 </p>
 
                 {/* Add To Cart */}
-                <button className="mt-auto w-full py-4 rounded-xl bg-blue-600 text-white font-medium flex items-center justify-center gap-2 hover:bg-blue-700 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 shadow-lg shadow-blue-100" onClick={()=>{handleAddtocard(keye+1)}}>
+                <button className="mt-auto w-full py-4 rounded-xl text-white font-medium flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200" style={{ backgroundColor: '#C8A882', color: '#0D0D0D' }} onClick={()=>{handleAddtocard(keye+1)}}>
 
                     <span className="material-symbols-outlined text-[18px]">
                     add_shopping_cart

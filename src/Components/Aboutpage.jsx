@@ -1,286 +1,312 @@
-export default function AboutPage() {
+    import { useEffect, useRef, useState } from "react";
+
+    const STATS = [
+    { number: "12+", label: "Years of craft" },
+    { number: "80K", label: "Pairs sold" },
+    { number: "42",  label: "Countries" },
+    { number: "98%", label: "Satisfaction" },
+    ];
+
+    const TEAM = [
+    { name: "Layla Hassan",   role: "Founder & Creative Director", image: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=400&q=80" },
+    { name: "Marcus Reid",    role: "Head of Design",               image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&q=80" },
+    { name: "Yuki Tanaka",    role: "Lead Craftsman",               image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&q=80" },
+    ];
+
+    const VALUES = [
+    { n: "01", title: "Craft first",      body: "Every pair is built by hand. We believe the time spent on details is never wasted — it's the whole point." },
+    { n: "02", title: "Honest materials", body: "No synthetics hiding as leather. What you see is what it is. We source full-grain hides and natural rubber only." },
+    { n: "03", title: "Timeless form",    body: "We don't chase seasons. Our silhouettes are designed to look right in ten years as much as they do today." },
+    ];
+
+    export function Marquee({ text, speed = 40, reverse = false }) {
+    const trackRef = useRef(null);
+    const posRef   = useRef(0);
+    const rafRef   = useRef(null);
+
+    useEffect(() => {
+        const track = trackRef.current;
+        if (!track) return;
+        const halfW = track.scrollWidth / 2;
+
+        function step() {
+        posRef.current += reverse ? speed / 60 : -(speed / 60);
+        if (!reverse && posRef.current <= -halfW) posRef.current = 0;
+        if (reverse  && posRef.current >= 0)      posRef.current = -halfW;
+        track.style.transform = `translateX(${posRef.current}px)`;
+        rafRef.current = requestAnimationFrame(step);
+        }
+        rafRef.current = requestAnimationFrame(step);
+        return () => cancelAnimationFrame(rafRef.current);
+    }, [speed, reverse]);
+
+    const repeated = Array(8).fill(text).join("  ·  ");
+
     return (
-        <main className="bg-[#f8f8f7] text-[#111] overflow-hidden">
+        <div style={{ overflow: "hidden", width: "100%" }}>
+        <div ref={trackRef} style={{ display: "inline-flex", whiteSpace: "nowrap", willChange: "transform" }}>
+            <span style={{
+            fontFamily: "'Playfair Display', serif",
+            fontSize: 72, fontWeight: 700,
+            color: "transparent",
+            WebkitTextStroke: "1px rgba(240,236,228,0.18)",
+            letterSpacing: "0.02em",
+            paddingRight: "2rem",
+            userSelect: "none",
+            }}>
+            {repeated}
+            </span>
+            <span style={{
+            fontFamily: "'Playfair Display', serif",
+            fontSize: 72, fontWeight: 700,
+            color: "transparent",
+            WebkitTextStroke: "1px rgba(240,236,228,0.18)",
+            letterSpacing: "0.02em",
+            paddingRight: "2rem",
+            userSelect: "none",
+            }}>
+            {repeated}
+            </span>
+        </div>
+        </div>
+    );
+    }
+
+    export function FilledMarquee({ text, speed = 30 }) {
+    const trackRef = useRef(null);
+    const posRef   = useRef(0);
+    const rafRef   = useRef(null);
+
+    useEffect(() => {
+        const track = trackRef.current;
+        if (!track) return;
+        const halfW = track.scrollWidth / 2;
+        function step() {
+        posRef.current -= speed / 60;
+        if (posRef.current <= -halfW) posRef.current = 0;
+        track.style.transform = `translateX(${posRef.current}px)`;
+        rafRef.current = requestAnimationFrame(step);
+        }
+        rafRef.current = requestAnimationFrame(step);
+        return () => cancelAnimationFrame(rafRef.current);
+    }, [speed]);
+
+    const items = Array(10).fill(null).map((_, i) => (
+        <span key={i} style={{ display: "inline-flex", alignItems: "center", gap: 24 }}>
+        <span style={{
+            fontFamily: "'DM Sans', sans-serif",
+            fontSize: 13, fontWeight: 500,
+            letterSpacing: "0.2em", textTransform: "uppercase",
+            color: "#0D0D0D",
+        }}>{text}</span>
+        <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#0D0D0D", flexShrink: 0 }} />
+        </span>
+    ));
+
+    return (
+        <div style={{ overflow: "hidden", width: "100%", background: "#C8A882", padding: "14px 0" }}>
+        <div ref={trackRef} style={{ display: "inline-flex", whiteSpace: "nowrap", willChange: "transform", gap: 32 }}>
+            {items}{items}
+        </div>
+        </div>
+    );
+    }
+    
+    function HeroBlock() {
+    return (
+        <section style={{
+        display: "grid",
         
-        {/* Hero Section */}
-        <section className="relative h-[870px] w-full flex items-center overflow-hidden">
-            
-            <img
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSV4m9WUJ9BXjMTBm6LYCzBCD135BCK6I0nR6rKndV_AaIZM0Jv6fKXnho4Bp0SeP5vj6AzSt35PSzd2AeMmnDxSTGVZK_SIN11aJSm22-DK7pRQGRLdt2xYOltkHHo38xFeX8Z2_GiBXhtkaPJVenwctd7M_bjSyJm3yNTIk0dAIt8dCKsub3x7af7gntyvdW31B4m8SuGBj2XAU-EwYjjeByINIh9vdmKqIgWoOJDscwSkAuMh_5SXGkOcviqez80f4U4B8BUmg"
-            alt=""
-            loading='lazy'
-            className="absolute inset-0 w-full h-full object-cover z-0"
-            />
-
-            <div className="absolute inset-0 bg-gradient-to-r from-[#f8f8f7]/90 via-[#f8f8f7]/50 to-transparent z-10" />
-
-            <div className="relative z-20 max-w-[1400px] mx-auto px-4 md:px-8 w-full">
-            <div className="max-w-2xl">
-                
-                <span className="text-[#666] tracking-[0.2em] uppercase mb-6 block text-sm font-medium">
-                Established 2012
-                </span>
-
-                <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-8">
-                Our Story: Redefining Excellence.
-                </h1>
-
-                <p className="text-lg text-[#555] max-w-xl mb-12 leading-relaxed">
-                We believe that luxury isn't just about labels; it's a commitment
-                to precision, intentional design, and the quiet beauty of
-                exceptional craftsmanship.
-                </p>
-
-                <button className="bg-black text-white hover:scale-[1.03] transition-all duration-300 px-8 py-4 rounded-full shadow-xl">
-                Learn More
-                </button>
-            </div>
-            </div>
-        </section>
-
-        {/* Philosophy */}
-        <section className="py-32 max-w-[1400px] mx-auto px-4 md:px-8">
-            
-            <div className="text-center mb-20">
-            <h2 className="text-5xl font-bold mb-4">
-                Our Core Philosophy
-            </h2>
-
-            <div className="h-1 w-20 bg-black mx-auto rounded-full" />
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            
-            {/* Card */}
-            <div className="bg-white p-10 rounded-3xl shadow-sm border border-[#ececec] hover:-translate-y-2 transition-all duration-300">
-                
-                <div className="w-14 h-14 bg-[#f1f1f1] rounded-full flex items-center justify-center mb-8">
-                <span className="material-symbols-outlined text-[26px]">
-                    diamond
-                </span>
-                </div>
-
-                <h3 className="text-2xl font-semibold mb-4">
-                Uncompromising Quality
-                </h3>
-
-                <p className="text-[#666] leading-relaxed">
-                We source only the finest materials, ensuring every product meets
-                our rigorous standards of longevity and tactile excellence.
-                </p>
-            </div>
-
-            {/* Card */}
-            <div className="bg-white p-10 rounded-3xl shadow-sm border border-[#ececec] hover:-translate-y-2 transition-all duration-300">
-                
-                <div className="w-14 h-14 bg-[#f1f1f1] rounded-full flex items-center justify-center mb-8">
-                <span className="material-symbols-outlined text-[26px]">
-                    ink_pen
-                </span>
-                </div>
-
-                <h3 className="text-2xl font-semibold mb-4">
-                Minimalist Design
-                </h3>
-
-                <p className="text-[#666] leading-relaxed">
-                Our aesthetic is defined by intentional restraint. We remove the
-                noise to let the essence of the product shine through.
-                </p>
-            </div>
-
-            {/* Card */}
-            <div className="bg-white p-10 rounded-3xl shadow-sm border border-[#ececec] hover:-translate-y-2 transition-all duration-300">
-                
-                <div className="w-14 h-14 bg-[#f1f1f1] rounded-full flex items-center justify-center mb-8">
-                <span className="material-symbols-outlined text-[26px]">
-                    eco
-                </span>
-                </div>
-
-                <h3 className="text-2xl font-semibold mb-4">
-                Sustainable Vision
-                </h3>
-
-                <p className="text-[#666] leading-relaxed">
-                We are dedicated to ethical sourcing and sustainable production
-                cycles that respect both the creator and the environment.
-                </p>
-            </div>
-            </div>
-        </section>
-
-        {/* Craftsmanship */}
-        <section className="bg-[#f1f1f1] py-32">
-            
-            <div className="max-w-[1400px] mx-auto px-4 md:px-8 space-y-32">
-            
-            {/* Row 1 */}
-            <div className="flex flex-col md:flex-row items-center gap-20">
-                
-                <div className="w-full md:w-1/2 overflow-hidden rounded-3xl shadow-xl">
-                <img
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBq6IMRnb56eCfe8jcZOr1-BLNvSN9_axBCpQBdFvwuCPckdoSgd1Cb3_bz6xBouWacYqeg1Cssd89-Ea11a7u4TrQwMfCIXkXZ7y3N0oMh2JjXw0DLnuxeablURZiVjy6vwWlgjrSh5DNBTlr3jrfWdIyxnmmMB3VOShcJdUX12B4tBwsbbFh5VdUxvfFICa8FBctaveBNqBKzmhd77XlIzMeXmh7yiC4ZBP5VXr5gHHyDtz0MAh3ZMXkcqOdlWjUyKJ2xvdKqqu8"
-                    alt=""
-                    loading='lazy'
-                    className="w-full h-[500px] object-cover hover:scale-105 transition-transform duration-700"
-                />
-                </div>
-
-                <div className="w-full md:w-1/2">
-                
-                <span className="tracking-[0.2em] uppercase mb-4 block text-sm text-[#777]">
-                    The Process
-                </span>
-
-                <h2 className="text-5xl font-bold mb-8">
-                    Artistry in Every Stitch
-                </h2>
-
-                <p className="text-lg text-[#555] leading-relaxed mb-8">
-                    Every LUXE piece begins with a conversation between materials
-                    and masters. Our artisans bring decades of experience, blending
-                    traditional techniques with modern technological precision.
-                </p>
-
-                <div className="flex items-center gap-3 font-medium">
-                    <span>EXPLORE THE STUDIO</span>
-
-                    <span className="material-symbols-outlined text-[18px]">
-                    arrow_forward
-                    </span>
-                </div>
-                </div>
-            </div>
-
-            {/* Row 2 */}
-            <div className="flex flex-col md:flex-row-reverse items-center gap-20">
-                
-                <div className="w-full md:w-1/2 overflow-hidden rounded-3xl shadow-xl">
-                <img
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfEAAxA450YSZqbdRvZrF81fvNcD9ln8CWYz_gt_xjFblVVcwpFvzFvhZ1ug6ye33AyxJNby3l81SjjyYoZz1Oo1KsQnEAZp2VITzv1EDFknVjut_XBZ9-ikqlEXFtEk2ScmMKcQKAsGJTaUrFFVbqj9EmP3Fgpxri3hCoXRYRy9o6XK5sMdkxE0HwwCTzZb1XZcwU1JoqRzadWS6SguZI3jsoB2wZo0zieGyUJ8G70jqi-VHpezD7eX5K0F8AwX4zlOgzzWna1Js"
-                    alt=""
-                    loading='lazy'
-                    className="w-full h-[500px] object-cover hover:scale-105 transition-transform duration-700"
-                />
-                </div>
-
-                <div className="w-full md:w-1/2">
-                
-                <span className="tracking-[0.2em] uppercase mb-4 block text-sm text-[#777]">
-                    Our Standard
-                </span>
-
-                <h2 className="text-5xl font-bold mb-8">
-                    The Alchemy of Materials
-                </h2>
-
-                <p className="text-lg text-[#555] leading-relaxed mb-8">
-                    We spend months sourcing the perfect textiles and components.
-                    From Italian-tanned leathers to Japanese-milled fabrics, our
-                    materials are chosen for both beauty and longevity.
-                </p>
-
-                <div className="flex items-center gap-3 font-medium">
-                    <span>Sourcing Ethics</span>
-
-                    <span className="material-symbols-outlined text-[18px]">
-                    arrow_forward
-                    </span>
-                </div>
-                </div>
-            </div>
-            </div>
-        </section>
-
-        {/* Leadership */}
-        <section className="py-32 max-w-[1400px] mx-auto px-4 md:px-8">
-            
-            <div className="mb-16">
-            <h2 className="text-5xl font-bold mb-4">
-                Guided by Vision
-            </h2>
-
-            <p className="text-[#666] max-w-2xl text-lg">
-                Meet the people behind the LUXE brand who are committed to
-                redefining the standards of luxury commerce.
+        minHeight: 620,
+        borderBottom: "0.5px solid rgba(255,255,255,0.08)",
+        }}>
+        <div style={{ padding: "5rem 3.5rem", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+            <p style={{ fontSize: 11, letterSpacing: "0.22em", textTransform: "uppercase", color: "rgba(240,236,228,0.35)" }}>
+            Our story · Est. 2012
+            </p>
+            <div>
+            <h1 style={{
+                fontFamily: "'Playfair Display', serif",
+                fontSize: 72, fontWeight: 700,
+                lineHeight: 1.0, color: "#F0ECE4",
+                marginBottom: "2rem",
+            }}>
+                Built for<br />
+                <em style={{ fontStyle: "italic", color: "#C8A882" }}>those who</em><br />
+                walk far.
+            </h1>
+            <p style={{ fontSize: 15, color: "rgba(240,236,228,0.5)", lineHeight: 1.9, maxWidth: 360 }}>
+                SOLE began in a small atelier in Cairo with one conviction — that a shoe worth wearing is a shoe worth making properly. Twelve years later, that belief still drives every stitch.
             </p>
             </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            
-            {[
-                {
-                name: "Julian Vance",
-                role: "Founder & CEO",
-                img: "https://lh3.googleusercontent.com/aida-public/AB6AXuATN3w8Kp_D3mGGkkyT8ALdPH8_11bBk1VPyeGa73l6o7S_Us_U5Pj9TxyIcBBoE9Oye0yBy_wZrghxSLJoAm5Aq9nPbgQQhm_PofhTmIFRUIUUm3Fvjh-9oXMAlu0sByTJVq1sOdIBQrGCOJJjbf33F1ff7cojXR318U43GjWQ-Hkfw18vODjz8EMfZepGy14aiA4QaPx2fM2dEihTrkjkqprLLE4KZGdqsaip3tPKPRCfV_Co6ELgeo-hPYKE3wUV9OvqWy-vBmo",
-                },
-                {
-                name: "Elena Rossi",
-                role: "Creative Director",
-                img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAFm7_ZUaqtgJeHRDjuos-ScmLmnFC0Mgp5GB2dH3i1xvoLH5Si7KK8JUCZgBq15CTMRy9AS98i-qZ5347-s8jlltqDRYQ6oT-qCIItoNrQCZC27sf0iyZgBnYEvhnwPyTPmwAj02dsxQJoZr7kFl4J1HcV4PirEvqRZgQxkgREiueckWNm3UafbwO-JoIiFJPqyIpyLb_OkZsDsRYCpsT1YHk6dwTtPINRlW12ZVeLb4UidXPs3jQ6A2VYbBJr3WEHdXpf_vIMZaw",
-                },
-                {
-                name: "Marcus Thorne",
-                role: "Lead Designer",
-                img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCeGhq1SsVXR0JcS4sTx2Umz3iQGQQ8MzBhuCAgsfMC0yggK8eIK97SG6UIpGrimiyQkOUE_qgy-Al94CFuKNtPjsfG0EUOAoRt96lr-a5FBTkiBkuFcvfUwmJThpBRV4IFgoMqVfVo_PlJTwYqhYxjpZ_pcX4UFP2xa1_JRgNjQn54UBRLFAySND0oLCrtZPBdn-YGSzrql1ix7LXxc8hGysre6EP1GhvR2jt_BDxKX8SCq0VqzmseySAjyxz1YEVAoVF45QPpP-g",
-                },
-                {
-                name: "Sarah Chen",
-                role: "Head of Sustainability",
-                img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDDX2yADoY85yX7jVdd4_swlChMtowNV9YSw9ZS9e3j4yyb6YcfcV5Guek3vtv3-AG7XD5UsWLuwnZow6IPfAlRPc32X8BpMjpPXXbrzAypobkHmzZPPQDMHFqugI55mEtKjaJy98qoB7SZ2TajLjP5opzT4yYVetj1goThqMcw7b3GleNLB8MHEo1nRSNkZMso0vT_YtU5zVMB-XvfrLIr2cSvIdxj4e-lVBcdk0vwXoewvRaBZ_kGlcmeeES7-SQTjrphw21pSTY",
-                },
-            ].map((item, index) => (
-                <div key={index} className="group">
-                
-                <div className="aspect-[3/4] overflow-hidden rounded-3xl mb-6 bg-[#eee]">
-                    <img
-                    src={item.img}
-                    alt={item.name}
-                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
-                    />
-                </div>
-
-                <h4 className="text-2xl font-semibold mb-1">
-                    {item.name}
-                </h4>
-
-                <p className="uppercase tracking-[0.2em] text-sm text-[#777]">
-                    {item.role}
-                </p>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 0, borderTop: "0.5px solid rgba(255,255,255,0.08)", paddingTop: "2rem" }} >
+            {STATS.map((s, i) => (
+                <div key={i} style={{ paddingRight: 24, borderRight: i < 3 ? "0.5px solid rgba(255,255,255,0.08)" : "none", paddingLeft: i > 0 ? 24 : 0 }}>
+                <p style={{ fontFamily: "'Playfair Display', serif", fontSize: 34, fontWeight: 700, color: "#C8A882", marginBottom: 4 }}>{s.number}</p>
+                <p style={{ fontSize: 11, color: "rgba(240,236,228,0.35)", letterSpacing: "0.1em", textTransform: "uppercase" }}>{s.label}</p>
                 </div>
             ))}
             </div>
+        </div>
         </section>
-
-        {/* CTA */}
-        <section className="relative py-32 overflow-hidden">
-            
-            <div className="absolute inset-0 bg-[#efefef]" />
-
-            <div className="relative z-10 max-w-[1400px] mx-auto px-4 md:px-8 text-center">
-            
-            <h2 className="text-5xl md:text-7xl font-bold mb-8">
-                Ready to Experience LUXE?
-            </h2>
-
-            <p className="text-lg text-[#666] max-w-2xl mx-auto mb-12 leading-relaxed">
-                Join thousands of discerning individuals who have discovered the
-                difference of intentional design and uncompromising quality.
-            </p>
-
-            <div className="flex flex-col sm:flex-row justify-center gap-6">
-                
-                <button className="bg-black text-white hover:scale-[1.03] transition-all duration-300 px-10 py-5 rounded-full shadow-xl">
-                Shop the Collection
-                </button>
-
-                <button className="border border-[#dcdcdc] hover:bg-white transition-all duration-300 px-10 py-5 rounded-full">
-                View the Lookbook
-                </button>
-            </div>
-            </div>
-        </section>
-        </main>
     );
-}
+    }
+
+    function ManifestoBlock() {
+    return (
+        <section style={{ padding: "6rem 3.5rem", borderBottom: "0.5px solid rgba(255,255,255,0.08)", position: "relative" }}>
+        <div style={{ maxWidth: 720, margin: "0 auto", textAlign: "center" }}>
+            <p style={{ fontSize: 11, letterSpacing: "0.22em", textTransform: "uppercase", color: "#C8A882", marginBottom: "2rem" }}>
+            Manifesto
+            </p>
+            <p style={{
+            fontFamily: "'Playfair Display', serif",
+            fontSize: 36, fontWeight: 400,
+            color: "#F0ECE4", lineHeight: 1.5,
+            marginBottom: "2.5rem",
+            }}>
+            "We make shoes for <em style={{ color: "#C8A882" }}>people who notice</em> — the weight of a sole, the grain of the leather, the way a heel sits."
+            </p>
+            <p style={{ fontSize: 14, color: "rgba(240,236,228,0.4)", letterSpacing: "0.08em" }}>
+            — Layla Hassan, Founder
+            </p>
+        </div>
+        </section>
+    );
+    }
+
+    function ValuesBlock() {
+    const [hovered, setHovered] = useState(null);
+    return (
+        <section style={{ padding: "5rem 3.5rem", borderBottom: "0.5px solid rgba(255,255,255,0.08)" }}>
+        <p style={{ fontSize: 11, letterSpacing: "0.22em", textTransform: "uppercase", color: "rgba(240,236,228,0.35)", marginBottom: "3rem" }}>
+            What we stand for
+        </p>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 0 }}>
+            {VALUES.map((v, i) => (
+            <div
+                key={i}
+                onMouseEnter={() => setHovered(i)}
+                onMouseLeave={() => setHovered(null)}
+                style={{
+                padding: "2.5rem",
+                borderRight: i < 2 ? "0.5px solid rgba(255,255,255,0.08)" : "none",
+                borderTop: "2px solid",
+                borderTopColor: hovered === i ? "#C8A882" : "transparent",
+                transition: "border-top-color 0.3s",
+                }}
+            >
+                <p style={{ fontFamily: "'Playfair Display', serif", fontSize: 11, color: "rgba(240,236,228,0.25)", marginBottom: "1.5rem", letterSpacing: "0.1em" }}>{v.n}</p>
+                <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: 24, fontWeight: 400, color: "#F0ECE4", marginBottom: "1rem" }}>{v.title}</h3>
+                <p style={{ fontSize: 14, color: "rgba(240,236,228,0.45)", lineHeight: 1.85 }}>{v.body}</p>
+            </div>
+            ))}
+        </div>
+        </section>
+    );
+    }
+
+    function ProcessBlock() {
+    return (
+        <section style={{ borderBottom: "0.5px solid rgba(255,255,255,0.08)" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
+            <div style={{ padding: "5rem 3.5rem", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+            <p style={{ fontSize: 11, letterSpacing: "0.22em", textTransform: "uppercase", color: "rgba(240,236,228,0.35)", marginBottom: "2rem" }}>The process</p>
+            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 48, fontWeight: 700, color: "#F0ECE4", lineHeight: 1.1, marginBottom: "2.5rem" }}>
+                200 steps.<br /><em style={{ color: "#C8A882", fontStyle: "italic" }}>One pair.</em>
+            </h2>
+            {["Leather selection & inspection", "Pattern cutting by hand", "Lasted construction", "Hand-stitched welt", "Finishing & quality pass"].map((step, i) => (
+                <div key={i} style={{ display: "flex", gap: 20, alignItems: "flex-start", marginBottom: "1.25rem" }}>
+                <span style={{ fontFamily: "'Playfair Display', serif", fontSize: 13, color: "#C8A882", minWidth: 24, paddingTop: 2 }}>0{i + 1}</span>
+                <p style={{ fontSize: 14, color: "rgba(240,236,228,0.6)", lineHeight: 1.6 }}>{step}</p>
+                </div>
+            ))}
+            </div>
+            <div style={{ display: "grid", gridTemplateRows: "1fr 1fr", gap: 0 }}>
+
+            </div>
+        </div>
+        </section>
+    );
+    }
+
+    function TeamBlock() {
+    return (
+        <section style={{ padding: "5rem 3.5rem", borderBottom: "0.5px solid rgba(255,255,255,0.08)" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: "3rem" }}>
+            <p style={{ fontSize: 11, letterSpacing: "0.22em", textTransform: "uppercase", color: "rgba(240,236,228,0.35)" }}>The people</p>
+            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 32, fontWeight: 400, color: "#F0ECE4" }}>Meet the team</h2>
+        </div>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 20 }}>
+            {TEAM.map((m, i) => (
+            <div key={i} style={{ position: "relative", overflow: "hidden", borderRadius: 10, aspectRatio: "3/4" }}
+                onMouseEnter={e => { e.currentTarget.querySelector("img").style.transform = "scale(1.05)"; e.currentTarget.querySelector(".overlay").style.opacity = 1; }}
+                onMouseLeave={e => { e.currentTarget.querySelector("img").style.transform = "scale(1)";    e.currentTarget.querySelector(".overlay").style.opacity = 0; }}
+            >
+                <img src={m.image} alt={m.name} style={{ width: "100%", height: "100%", objectFit: "cover", filter: "brightness(0.55) contrast(1.1)", transition: "transform 0.5s" }} />
+                <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(13,13,13,0.9) 0%, transparent 55%)" }} />
+                <div className="overlay" style={{ position: "absolute", inset: 0, background: "rgba(200,168,130,0.1)", opacity: 0, transition: "opacity 0.3s" }} />
+                <div style={{ position: "absolute", bottom: "1.5rem", left: "1.5rem" }}>
+                <p style={{ fontFamily: "'Playfair Display', serif", fontSize: 20, color: "#F0ECE4", marginBottom: 4 }}>{m.name}</p>
+                <p style={{ fontSize: 11, color: "#C8A882", letterSpacing: "0.1em", textTransform: "uppercase" }}>{m.role}</p>
+                </div>
+            </div>
+            ))}
+        </div>
+        </section>
+    );
+    }
+
+    function CtaBlock() {
+    return (
+        <section style={{ padding: "6rem 3.5rem", textAlign: "center" }}>
+        <p style={{ fontSize: 11, letterSpacing: "0.22em", textTransform: "uppercase", color: "rgba(240,236,228,0.35)", marginBottom: "1.5rem" }}>
+            Ready to walk with us?
+        </p>
+        <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 56, fontWeight: 700, color: "#F0ECE4", lineHeight: 1.1, marginBottom: "2.5rem" }}>
+            Find your pair.
+        </h2>
+        <button style={{
+            fontFamily: "'DM Sans', sans-serif",
+            fontSize: 13, fontWeight: 500,
+            letterSpacing: "0.1em", textTransform: "uppercase",
+            padding: "16px 48px", borderRadius: 4,
+            background: "#C8A882", color: "#0D0D0D",
+            border: "none", cursor: "pointer",
+        }}>
+            Shop the collection
+        </button>
+        </section>
+    );
+    }
+
+    export default function AboutSection() {
+    return (
+        <>
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+        <div style={{ fontFamily: "'DM Sans', sans-serif", background: "#0D0D0D", color: "#F0ECE4", minHeight: "100vh" } }>
+            <div> <HeroBlock /></div>
+            {/* Marquee strip 1 — outline */}
+            <div style={{ padding: "2rem 0", borderBottom: "0.5px solid rgba(255,255,255,0.08)", overflow: "hidden" }}>
+            <Marquee text="Handcrafted Footwear · Cairo · Est. 2012 · Walk Further" speed={35} />
+            </div>
+
+            <ManifestoBlock />
+            <ValuesBlock />
+
+            {/* Filled marquee strip */}
+            <FilledMarquee text="Free shipping on orders over $150 · Handmade in Egypt · 30-day returns · Lifetime resoling" speed={38} />
+
+            <ProcessBlock />
+
+            {/* Marquee strip 2 — reverse outline */}
+            <div style={{ padding: "2rem 0", borderBottom: "0.5px solid rgba(255,255,255,0.08)", overflow: "hidden" }}>
+            <Marquee text="Goodyear Welted · Full Grain · Natural Rubber · Zero Compromise" speed={28} reverse />
+            </div>
+
+            <TeamBlock />
+            <CtaBlock />
+        </div>
+        </>
+    );
+    }

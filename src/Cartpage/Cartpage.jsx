@@ -83,15 +83,15 @@ export default function CartPage() {
             <Button onClick={confirmAgree}>Agree</Button>
             </DialogActions>
         </Dialog>
-        <main className="flex-grow max-w-[1400px] mx-auto w-full px-4 md:px-10 py-12 md:py-16 bg-[#f8f8f6] min-h-screen relative">
+        <main className="flex-grow max-w-[1400px] mx-auto w-full px-4 md:px-10 py-12 md:py-16 min-h-screen relative" style={{ backgroundColor: '#0D0D0D' }}>
         <div className="flex flex-col gap-12">
             {/* Header */}
             <div className="flex flex-col gap-4">
-            <h1 className="text-5xl font-semibold tracking-tight text-[#111111]">
+            <h1 className="text-5xl font-semibold tracking-tight" style={{ color: '#F0ECE4', fontFamily: "'Playfair Display', serif" }}>
                 Shopping Bag
             </h1>
 
-            <p className="text-lg text-[#6b6b6b] max-w-2xl leading-relaxed">
+            <p className="text-lg max-w-2xl leading-relaxed" style={{ color: 'rgba(240,236,228,0.6)' }}>
                 Refined selections for the discerning individual. Review your
                 items before proceeding to checkout.
             </p>
@@ -100,17 +100,18 @@ export default function CartPage() {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             {/* Cart Items */}
             <div className="lg:col-span-8 flex flex-col gap-6 min-w-full">
-                <div className="flex flex-col border-y border-[#dcdcd7]">
+                <div className="flex flex-col border-y" style={{ borderColor: 'rgba(200,168,130,0.2)' }}>
                     {state.map((item, index) => {
                         if (item.addtocard) {
                         return (
                             <div
                             key={index + 1}
                             className={`py-8 flex flex-col md:flex-row gap-6 items-center ${
-                                index !== 0 ? "border-t border-[#dcdcd7]" : ""
+                                index !== 0 ? "border-t" : ""
                             }`}
+                            style={{ borderColor: index !== 0 ? 'rgba(200,168,130,0.2)' : 'transparent' }}
                             >
-                            <div className="w-full md:w-40 aspect-square overflow-hidden rounded-2xl bg-[#f1f1ee]">
+                            <div className="w-full md:w-40 aspect-square overflow-hidden rounded-2xl" style={{ backgroundColor: '#1a1a1a' }}>
                                 <img
                                 src={item.img}
                                 alt={item.name}
@@ -121,41 +122,41 @@ export default function CartPage() {
                             <div className="flex-grow flex flex-col gap-2">
                                 <div className="flex justify-between items-start gap-6">
                                 <div className="flex flex-col">
-                                    <span className="text-xs uppercase tracking-[0.25em] text-[#8a8a82] mb-2">
+                                    <span className="text-xs uppercase tracking-[0.25em] mb-2" style={{ color: 'rgba(200,168,130,0.6)' }}>
                                     {item.category}
                                     </span>
 
-                                    <h3 className="text-2xl font-medium text-[#111111]">
+                                    <h3 className="text-2xl font-medium" style={{ color: '#F0ECE4' }}>
                                     {item.name}
                                     </h3>
                                 </div>
 
-                                <span className="text-2xl font-semibold text-[#111111] whitespace-nowrap">
+                                <span className="text-2xl font-semibold whitespace-nowrap" style={{ color: '#F0ECE4' }}>
                                     ${(getPriceAfterDiscount(item.price, item.Discount) * item.countincart).toFixed(2)}
                                 </span>
                                 </div>
 
                                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mt-5">
-                                <div className="flex items-center gap-5 bg-white border border-[#e2e2dc] px-5 py-3 rounded-full w-fit shadow-sm">
+                                <div className="flex items-center gap-5 px-5 py-3 rounded-full w-fit shadow-sm" style={{ backgroundColor: 'rgba(13,13,13,0.5)', borderColor: 'rgba(200,168,130,0.2)', border: '1px solid', color: 'rgba(200,168,130,0.7)' }}>
                                     <span
-                                    className="fa-solid fa-minus text-[#777] hover:text-black transition-colors"
+                                    className="fa-solid fa-minus cursor-pointer hover:text-yellow-300 transition-colors"
                                     onClick={(e) => {
                                         handleminusitem(index, e.target);
                                     }}
                                     ></span>
 
-                                    <span className="text-base font-medium text-[#111] w-5 text-center">
+                                    <span className="text-base font-medium w-5 text-center" style={{ color: '#F0ECE4' }}>
                                     {state[index].countincart}
                                     </span>
 
                                     <span
-                                    className="fa-solid fa-plus text-[#777] hover:text-black transition-colors"
+                                    className="fa-solid fa-plus cursor-pointer hover:text-yellow-300 transition-colors"
                                     onClick={() => {
                                         handleplusitem(index);
                                     }}
                                     ></span>
                                 </div>
-                                <button className="flex items-center gap-2 text-red-500 hover:text-red-300 transition-colors"  onClick={()=>{handleClickOpen(index)}}>
+                                <button className="flex items-center gap-2 transition-colors"  onClick={()=>{handleClickOpen(index)}} style={{ color: '#C8A882' }}>
                                     <span className="fa-regular fa-trash-can"></span>
                                     <span className="text-sm font-medium">
                                     Remove
@@ -170,10 +171,10 @@ export default function CartPage() {
                 </div>
                 {/* Shipping */}
                 <div className="flex items-center gap-3 py-2">
-                <span className="fa-regular fa-truck text-[#8a8a82]">
+                <span className="fa-regular fa-truck" style={{ color: 'rgba(200,168,130,0.6)' }}>
                     
                 </span>
-                <p className="text-[#6b6b6b]">
+                <p style={{ color: 'rgba(240,236,228,0.6)' }}>
                     Complementary white-glove shipping on orders over $1,000
                 </p>
                 </div>
@@ -181,42 +182,42 @@ export default function CartPage() {
 
             {/* Summary */}
             <aside className="lg:col-span-4 lg:sticky lg:top-24">
-                <div className="bg-white p-8 rounded-3xl border border-[#e2e2dc] flex flex-col gap-8 shadow-[0px_10px_40px_rgba(0,0,0,0.03)]">
-                <h2 className="text-3xl font-semibold text-[#111111]">
+                <div className="p-8 rounded-3xl border flex flex-col gap-8 shadow-[0px_10px_40px_rgba(0,0,0,0.5)]" style={{ backgroundColor: '#1a1a1a', borderColor: 'rgba(200,168,130,0.2)' }}>
+                <h2 className="text-3xl font-semibold" style={{ color: '#F0ECE4' }}>
                     Order Summary
                 </h2>
 
                 <div className="flex flex-col gap-5">
                     <div className="flex justify-between items-center">
-                    <span className="text-[#6b6b6b]">Subtotal</span>
+                    <span style={{ color: 'rgba(240,236,228,0.6)' }}>Subtotal</span>
 
-                    <span className="font-semibold text-[#111111]">
+                    <span className="font-semibold" style={{ color: '#F0ECE4' }}>
                         ${total}
                     </span>
                     </div>
 
                     <div className="flex justify-between items-center">
-                    <span className="text-[#6b6b6b]">Shipping</span>
+                    <span style={{ color: 'rgba(240,236,228,0.6)' }}>Shipping</span>
 
-                    <span className="font-semibold text-[#111111]">
+                    <span className="font-semibold" style={{ color: '#F0ECE4' }}>
                         Free
                     </span>
                     </div>
                 </div>
 
                 {/* Total */}
-                <div className="pt-6 border-t border-[#ecece7] flex flex-col gap-8">
+                <div className="pt-6 border-t flex flex-col gap-8" style={{ borderColor: 'rgba(200,168,130,0.2)' }}>
                     <div className="flex justify-between items-end">
-                    <span className="text-2xl font-semibold text-[#111111]">
+                    <span className="text-2xl font-semibold" style={{ color: '#F0ECE4' }}>
                         Total
                     </span>
 
                     <div className="flex flex-col items-end">
-                        <span className="text-4xl font-bold tracking-tight text-[#111111]">
+                        <span className="text-4xl font-bold tracking-tight" style={{ color: '#F0ECE4' }}>
                         ${total}
                         </span>
 
-                        <span className="text-sm text-[#8a8a82]">
+                        <span className="text-sm" style={{ color: 'rgba(200,168,130,0.6)' }}>
                         USD
                         </span>
                     </div>
@@ -225,21 +226,21 @@ export default function CartPage() {
                     {/* Buttons */}
                     <div className="flex flex-col gap-4">
                     <Link to={"/checkout"}>
-                        <button className={'w-full bg-[#111111] text-white py-4 rounded-2xl text-lg font-medium hover:opacity-90 hover:scale-[1.01] active:scale-[0.98] transition-all duration-300' + (cartItems.length === 0 ? ' cursor-not-allowed  hover:bg-black/50  opacity-50 text-[#111111]' : '')} disabled={cartItems.length === 0}>
+                        <button className={'w-full text-white py-4 rounded-2xl text-lg font-medium hover:opacity-90 hover:scale-[1.01] active:scale-[0.98] transition-all duration-300' + (cartItems.length === 0 ? ' cursor-not-allowed opacity-50' : '')} style={{ backgroundColor: cartItems.length === 0 ? 'rgba(200,168,130,0.3)' : '#C8A882', color: '#0D0D0D' }} disabled={cartItems.length === 0}>
                             Proceed to Checkout
                         </button>
                     </Link>
-                    <button className="w-full cursor-no-drop bg-[#f1f1ee] border border-[#e2e2dc] text-[#111111] py-4 rounded-2xl text-base font-medium hover:bg-[#ecece7] transition-all duration-300">
+                    <button className="w-full border text-base font-medium py-4 rounded-2xl transition-all duration-300" style={{ borderColor: 'rgba(200,168,130,0.2)', backgroundColor: 'rgba(200,168,130,0.05)', color: '#F0ECE4' }}>
                         Pay with Apple Pay
                     </button>
                     </div>
                 </div>
                 {/* Security */}
                 <div className="flex flex-col gap-4 pt-2">
-                    <p className="text-sm text-[#8a8a82] text-center">
+                    <p className="text-sm text-center" style={{ color: 'rgba(200,168,130,0.6)' }}>
                     Secure Checkout Guaranteed
                     </p>
-                    <div className="flex justify-center gap-4 opacity-50">
+                    <div className="flex justify-center gap-4" style={{ color: 'rgba(200,168,130,0.5)' }}>
                     <span className="fa-regular fa-credit-card">
                         
                     </span>
@@ -252,18 +253,19 @@ export default function CartPage() {
                 </div>
                 </div>
                 {/* Promo */}
-                <div className="mt-6 p-6 bg-white rounded-3xl border border-[#e2e2dc]">
-                <label className="text-xs uppercase tracking-[0.25em] text-[#8a8a82] mb-3 block">
+                <div className="mt-6 p-6 rounded-3xl border" style={{ backgroundColor: '#1a1a1a', borderColor: 'rgba(200,168,130,0.2)' }}>
+                <label className="text-xs uppercase tracking-[0.25em] mb-3 block" style={{ color: 'rgba(200,168,130,0.6)' }}>
                     Promo Code
                 </label>
                 <div className="flex gap-3">
                     <input
                     type="text"
                     placeholder="Enter code"
-                    className="flex-grow bg-[#f3f3ef] rounded-xl px-4 py-3 outline-none focus:ring-1 focus:ring-black text-[#111]"
+                    className="flex-grow rounded-xl px-4 py-3 outline-none focus:ring-1"
+                    style={{ backgroundColor: 'rgba(200,168,130,0.08)', color: '#F0ECE4' }}
                     />
 
-                    <button className="bg-[#111111] text-white px-5 rounded-xl hover:opacity-90 transition-all">
+                    <button className="text-white px-5 rounded-xl hover:opacity-90 transition-all" style={{ backgroundColor: '#C8A882', color: '#0D0D0D' }}>
                     Apply
                     </button>
                 </div>

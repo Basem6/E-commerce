@@ -9,7 +9,7 @@ import CartPage from './Cartpage/Cartpage';
 import ProductDetails from './Detailsproudct';
 import { Contextprovider } from './Context/Productscontext';
 import Checkout from './Components/Checkout';
-import AboutPage from './Components/Aboutpage';
+import AboutPage, { FilledMarquee } from './Components/Aboutpage';
 import { ToastContext } from './Context/Toastcontext';
 import LoginPage from './Components/Login';
 import WishlistPage from './Components/LoveProducts';
@@ -21,7 +21,7 @@ function App() {
             <Routes>
               <Route path="/" element={
                 <>
-                  <Navbar/>
+                  <Navbar top={"top"}/>
                   <HomePage></HomePage>
                   <Footer/>
                 </>
@@ -58,7 +58,6 @@ function App() {
                 <>
                   <Navbar/>
                   <AboutPage></AboutPage>
-                  <Footer/>
                 </>
               }></Route>
               <Route path='login' element={
