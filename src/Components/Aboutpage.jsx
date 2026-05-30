@@ -44,10 +44,10 @@
 
     return (
         <div style={{ overflow: "hidden", width: "100%" }}>
-        <div ref={trackRef} style={{ display: "inline-flex", whiteSpace: "nowrap", willChange: "transform" }}>
-            <span style={{
+        <div ref={trackRef} className={"text-[32px] lg:text-[72px]"} style={{ display: "inline-flex", whiteSpace: "nowrap", willChange: "transform" }}>
+            <span className={"text-[32px] lg:text-[72px]"} style={{
             fontFamily: "'Playfair Display', serif",
-            fontSize: 72, fontWeight: 700,
+            fontWeight: 700,
             color: "transparent",
             WebkitTextStroke: "1px rgba(240,236,228,0.18)",
             letterSpacing: "0.02em",
@@ -56,9 +56,9 @@
             }}>
             {repeated}
             </span>
-            <span style={{
+            <span className={"text-[32px] lg:text-[72px]"} style={{
             fontFamily: "'Playfair Display', serif",
-            fontSize: 72, fontWeight: 700,
+            fontWeight: 700,
             color: "transparent",
             WebkitTextStroke: "1px rgba(240,236,228,0.18)",
             letterSpacing: "0.02em",
@@ -114,13 +114,8 @@
     
     function HeroBlock() {
     return (
-        <section style={{
-        display: "grid",
-        
-        minHeight: 620,
-        borderBottom: "0.5px solid rgba(255,255,255,0.08)",
-        }}>
-        <div style={{ padding: "5rem 3.5rem", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+        <section>
+        <div className="py-24 px-6 lg:py-24 lg:px-10" style={{ display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
             <p style={{ fontSize: 11, letterSpacing: "0.22em", textTransform: "uppercase", color: "rgba(240,236,228,0.35)" }}>
             Our story · Est. 2012
             </p>
@@ -139,9 +134,9 @@
                 SOLE began in a small atelier in Cairo with one conviction — that a shoe worth wearing is a shoe worth making properly. Twelve years later, that belief still drives every stitch.
             </p>
             </div>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 0, borderTop: "0.5px solid rgba(255,255,255,0.08)", paddingTop: "2rem" }} >
+            <div className="flex flex-wrap min-w-full justify-between" >
             {STATS.map((s, i) => (
-                <div key={i} style={{ paddingRight: 24, borderRight: i < 3 ? "0.5px solid rgba(255,255,255,0.08)" : "none", paddingLeft: i > 0 ? 24 : 0 }}>
+                <div key={i} className="min-w-1/2 max-w-1/2 lg:min-w-1/4 lg:max-w-1/4   px-4  border-r-[0.5px] border-r-[#C8A882]/40">
                 <p style={{ fontFamily: "'Playfair Display', serif", fontSize: 34, fontWeight: 700, color: "#C8A882", marginBottom: 4 }}>{s.number}</p>
                 <p style={{ fontSize: 11, color: "rgba(240,236,228,0.35)", letterSpacing: "0.1em", textTransform: "uppercase" }}>{s.label}</p>
                 </div>
@@ -182,7 +177,7 @@
         <p style={{ fontSize: 11, letterSpacing: "0.22em", textTransform: "uppercase", color: "rgba(240,236,228,0.35)", marginBottom: "3rem" }}>
             What we stand for
         </p>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 0 }}>
+        <div className="flex-wrap lg:flex-nowrap flex ">
             {VALUES.map((v, i) => (
             <div
                 key={i}
@@ -209,7 +204,7 @@
     function ProcessBlock() {
     return (
         <section style={{ borderBottom: "0.5px solid rgba(255,255,255,0.08)" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
+        <div className="">
             <div style={{ padding: "5rem 3.5rem", display: "flex", flexDirection: "column", justifyContent: "center" }}>
             <p style={{ fontSize: 11, letterSpacing: "0.22em", textTransform: "uppercase", color: "rgba(240,236,228,0.35)", marginBottom: "2rem" }}>The process</p>
             <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 48, fontWeight: 700, color: "#F0ECE4", lineHeight: 1.1, marginBottom: "2.5rem" }}>
@@ -233,11 +228,11 @@
     function TeamBlock() {
     return (
         <section style={{ padding: "5rem 3.5rem", borderBottom: "0.5px solid rgba(255,255,255,0.08)" }}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: "3rem" }}>
+        <div  className="mb-5 flex justify-between items-center gap-3">
             <p style={{ fontSize: 11, letterSpacing: "0.22em", textTransform: "uppercase", color: "rgba(240,236,228,0.35)" }}>The people</p>
-            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 32, fontWeight: 400, color: "#F0ECE4" }}>Meet the team</h2>
+            <h2  className="whitespace-nowrap " style={{ fontFamily: "'Playfair Display', serif", fontSize: 25, fontWeight: 400, color: "#F0ECE4" }}>Meet the team</h2>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 20 }}>
+        <div className="flex gap-20 justify-center flex-wrap">
             {TEAM.map((m, i) => (
             <div key={i} style={{ position: "relative", overflow: "hidden", borderRadius: 10, aspectRatio: "3/4" }}
                 onMouseEnter={e => { e.currentTarget.querySelector("img").style.transform = "scale(1.05)"; e.currentTarget.querySelector(".overlay").style.opacity = 1; }}
@@ -287,10 +282,9 @@
         <div style={{ fontFamily: "'DM Sans', sans-serif", background: "#0D0D0D", color: "#F0ECE4", minHeight: "100vh" } }>
             <div> <HeroBlock /></div>
             {/* Marquee strip 1 — outline */}
-            <div style={{ padding: "2rem 0", borderBottom: "0.5px solid rgba(255,255,255,0.08)", overflow: "hidden" }}>
-            <Marquee text="Handcrafted Footwear · Cairo · Est. 2012 · Walk Further" speed={35} />
+            <div  style={{ padding: "2rem 0", borderBottom: "0.5px solid rgba(255,255,255,0.08)", overflow: "hidden" }}>
+            <Marquee text="Handcrafted Footwear · Cairo · Est. 2012 · Walk Further" speed={35}/>
             </div>
-
             <ManifestoBlock />
             <ValuesBlock />
 

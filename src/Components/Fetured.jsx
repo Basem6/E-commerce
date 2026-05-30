@@ -1,34 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { CartContext } from "../Context/Productscontext";
+import { useContext } from "react";
 export function HeroSlider() {
-        const FEATURED = [
-  {
-    id: 1,
-    brand: "Apple",
-    name: "Apple Watch Series 8",
-    price: 149,
-    tag: "New Drop",
-    image: "https://images.unsplash.com/photo-1487215078519-e21cc028cb29",
-    color: "#C8A882",
-  },
-  {
-    id: 2,
-    brand: "Adidas",
-    name: "Samba OG 911 ",
-    price: 110,
-    tag: "Best Seller",
-    image: "https://media.istockphoto.com/photos/image-of-black-leather-classic-shoes-picture-id1409339182?k=20&m=1409339182&s=612x612&w=0&h=9Ax5AQJR2f3eNuiZbOmXFguI_SJV7qDLWjGznQTO2MM=",
-    color: "#8FA8C8",
-  },
-  {
-    id: 3,
-    brand: "New Balance",
-    name: "Head Phones Classic",
-    price: 185,
-    tag: "Limited",
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDp0R08gCPSKSBaH7q3p5fQLwJ88blfZvqQHdboWJhHRwsSiRlYbNRUFBrKKuGW_BVyScD8SUkaii-ViiiY93qhVR-dG86DU8K3HubekbAzvgM8UUwoNeiaTaT5uq0XU6ZBfgsVDz27JEGTNZn9w7yz8M9lWHGvclag1lTv8B00KWuGvchJ0f4ukqwYTZFUPIGIjub5DOeSqk5mtZ5ZuOJefFAt2NlKH6PU3LrwSELMDcZWaMxtQiwwvUtSdOpWujtrd-RHClCwf6Y",
-    color: "#A8C89A",
-  },
-        ];
+    const {state} = useContext(CartContext)
+    const FEATURED=state.filter((item)=>{
+        return item.isfetured==true
+    })
     const [active, setActive] = useState(0);
     useEffect(() => {
         const t = setInterval(() => setActive(a => (a + 1) % FEATURED.length), 4000);
@@ -36,7 +14,6 @@ export function HeroSlider() {
     }, []);
 
     const p = FEATURED[active];
-
     return (
         <section className='min-h-full bg-black flex items-center flex-wrap gap-3 w-full overflow-x-hidden'>
         <div className="min-w-full w-full"  style={{ padding: "4rem 3rem", display: "flex", flexDirection: "column", justifyContent: "center", position: "relative" }}>
@@ -51,13 +28,14 @@ export function HeroSlider() {
             ))}
                 </h1>
                 <div className='size-90  rounded-lg overflow-hidden'>
-                <img src={p.image} alt={p.name} style={{ maxWidth: "100%", maxHeight: "100%", minHeight: "100%", minWidth: "100%", borderRadius: 8, objectFit: "cover" }} />
+                <img src={p.img} alt={p.name} style={{ maxWidth: "100%", maxHeight: "100%", minHeight: "100%", minWidth: "100%", borderRadius: 8, objectFit: "cover" }} />
                 </div>
             </div>
             <p style={{ fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: "#F0ECE4", marginBottom: "1.5rem" }} className='mt-4'>
             SS 2026 · New Arrivals
             </p>
             <div style={{ display: "flex", gap: 14 }} className='flex-wrap '>
+            <Link to={`/product/${state.indexOf(p)+1}`}>
             <button style={{
                 fontFamily: "'DM Sans', sans-serif",
                 fontSize: 13, fontWeight: 500,
@@ -68,6 +46,8 @@ export function HeroSlider() {
             }}>
                 Shop now
             </button>
+            </Link>
+            <Link to={"/shop"}>
             <button style={{
                 fontFamily: "'DM Sans', sans-serif",
                 fontSize: 13, fontWeight: 400,
@@ -78,6 +58,7 @@ export function HeroSlider() {
             }}>
                 View all
             </button>
+            </Link>
             </div>
             <div style={{ display: "flex", gap: 8, position: "absolute", bottom: "3rem", left: "3rem" }} className='flex-wrap '>
             {FEATURED.map((_, i) => (

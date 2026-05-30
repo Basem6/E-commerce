@@ -77,20 +77,21 @@ export default function MobileMenu({ isOpen, onClose }) {
                 }}
             >
                 {/* Navigation Links */}
-                <nav className="flex flex-col gap-1 p-6 border-b" style={{ borderColor: 'rgba(200,168,130,0.2)' }}>
+                <nav className="flex flex-col gap-2 p-6 border-b" style={{ borderColor: 'rgba(200,168,130,0.3)' }}>
                     <NavLink
                         to="/"
                         className={({ isActive }) =>
-                            `px-4 py-3 rounded-lg transition ${
+                            `px-5 py-4 rounded-lg transition ${
                                 isActive
-                                    ? "text-[#C8A882] bg-opacity-10"
-                                    : "text-gray-300 hover:text-[#C8A882]"
+                                    ? "text-[#C8A882] bg-[rgba(200,168,130,0.1)]"
+                                    : "text-gray-100 hover:text-[#C8A882]"
                             }`
                         }
                         style={{
                             fontFamily: "'Playfair Display', serif",
-                            fontSize: "18px",
-                            fontWeight: 500,
+                            fontSize: "20px",
+                            fontWeight: 600,
+                            letterSpacing: "0.05em",
                         }}
                         onClick={handleNavClick}
                     >
@@ -100,16 +101,17 @@ export default function MobileMenu({ isOpen, onClose }) {
                     <NavLink
                         to="/Shop"
                         className={({ isActive }) =>
-                            `px-4 py-3 rounded-lg transition ${
+                            `px-5 py-4 rounded-lg transition ${
                                 isActive
-                                    ? "text-[#C8A882] bg-opacity-10"
-                                    : "text-gray-300 hover:text-[#C8A882]"
+                                    ? "text-[#C8A882] bg-[rgba(200,168,130,0.1)]"
+                                    : "text-gray-100 hover:text-[#C8A882]"
                             }`
                         }
                         style={{
                             fontFamily: "'Playfair Display', serif",
-                            fontSize: "18px",
-                            fontWeight: 500,
+                            fontSize: "20px",
+                            fontWeight: 600,
+                            letterSpacing: "0.05em",
                         }}
                         onClick={handleNavClick}
                     >
@@ -117,18 +119,20 @@ export default function MobileMenu({ isOpen, onClose }) {
                     </NavLink>
 
                     <NavLink
+
                         to="/about"
                         className={({ isActive }) =>
-                            `px-4 py-3 rounded-lg transition ${
+                            `px-5 py-4 rounded-lg transition ${
                                 isActive
-                                    ? "text-[#C8A882] bg-opacity-10"
-                                    : "text-gray-300 hover:text-[#C8A882]"
+                                    ? "text-[#C8A882] bg-[rgba(200,168,130,0.1)]"
+                                    : "text-gray-100 hover:text-[#C8A882]"
                             }`
                         }
                         style={{
                             fontFamily: "'Playfair Display', serif",
-                            fontSize: "18px",
-                            fontWeight: 500,
+                            fontSize: "20px",
+                            fontWeight: 600,
+                            letterSpacing: "0.05em",
                         }}
                         onClick={handleNavClick}
                     >
@@ -150,7 +154,7 @@ export default function MobileMenu({ isOpen, onClose }) {
                         onClick={handleNavClick}
                     >
                         <FavoriteBorderIcon />
-                        <span style={{ fontFamily: "'Playfair Display', serif", fontSize: "16px" }}>
+                        <span style={{ fontFamily: "'Playfair Display', serif", fontSize: "19px" }}>
                             Wishlist
                         </span>
                     </NavLink>
@@ -167,7 +171,7 @@ export default function MobileMenu({ isOpen, onClose }) {
                         onClick={handleNavClick}
                     >
                         <LocalMallOutlinedIcon />
-                        <span style={{ fontFamily: "'Playfair Display', serif", fontSize: "16px" }}>
+                        <span style={{ fontFamily: "'Playfair Display', serif", fontSize: "19px" }}>
                             Cart
                         </span>
                     </NavLink>
@@ -184,7 +188,7 @@ export default function MobileMenu({ isOpen, onClose }) {
                         onClick={handleNavClick}
                     >
                         <Person2OutlinedIcon />
-                        <span style={{ fontFamily: "'Playfair Display', serif", fontSize: "16px" }}>
+                        <span style={{ fontFamily: "'Playfair Display', serif", fontSize: "19px" }}>
                             Login
                         </span>
                     </NavLink>

@@ -40,7 +40,7 @@ export default function ProductDetails() {
     }
     const priceAfterOffer = getPriceAfterDiscount(current.price, current.Discount)
     return (
-        <main className="max-w-[1400px] mx-auto px-4 md:px-10 py-12 min-h-screen" style={{ backgroundColor: '#0D0D0D' }}>
+        <main className=" mt-8 max-w-[1400px] mx-auto px-4 md:px-10 py-12 min-h-screen" style={{ backgroundColor: '#0D0D0D' }}>
         <section className="grid grid-cols-1 lg:grid-cols-12 gap-14 items-start">
             <div className="lg:col-span-7 flex flex-col md:flex-row-reverse gap-4">
             {/* Main Image */}

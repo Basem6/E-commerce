@@ -83,7 +83,7 @@ export default function CartPage() {
             <Button onClick={confirmAgree}>Agree</Button>
             </DialogActions>
         </Dialog>
-        <main className="flex-grow max-w-[1400px] mx-auto w-full px-4 md:px-10 py-12 md:py-16 min-h-screen relative" style={{ backgroundColor: '#0D0D0D' }}>
+        <main className="flex-grow max-w-[1400px] mx-auto w-full px-4 md:px-10 py-12 md:py-16 min-h-screen relative mt-7" style={{ backgroundColor: '#0D0D0D' }}>
         <div className="flex flex-col gap-12">
             {/* Header */}
             <div className="flex flex-col gap-4">
@@ -106,12 +106,12 @@ export default function CartPage() {
                         return (
                             <div
                             key={index + 1}
-                            className={`py-8 flex flex-col md:flex-row gap-6 items-center ${
+                            className={`py-8 flex flex-row gap-6 items-center ${
                                 index !== 0 ? "border-t" : ""
                             }`}
                             style={{ borderColor: index !== 0 ? 'rgba(200,168,130,0.2)' : 'transparent' }}
                             >
-                            <div className="w-full md:w-40 aspect-square overflow-hidden rounded-2xl" style={{ backgroundColor: '#1a1a1a' }}>
+                            <div className="w-20 md:w-40 aspect-square overflow-hidden rounded-2xl" style={{ backgroundColor: '#1a1a1a' }}>
                                 <img
                                 src={item.img}
                                 alt={item.name}
@@ -119,8 +119,8 @@ export default function CartPage() {
                                 />
                             </div>
 
-                            <div className="flex-grow flex flex-col gap-2">
-                                <div className="flex justify-between items-start gap-6">
+                            <div className="flex-grow flex flex-col gap-2 ">
+                                <div className="flex justify-between items-center gap-6">
                                 <div className="flex flex-col">
                                     <span className="text-xs uppercase tracking-[0.25em] mb-2" style={{ color: 'rgba(200,168,130,0.6)' }}>
                                     {item.category}
@@ -136,7 +136,7 @@ export default function CartPage() {
                                 </span>
                                 </div>
 
-                                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mt-5">
+                                <div className="flex flex-row  items-center justify-between gap-4 mt-5">
                                 <div className="flex items-center gap-5 px-5 py-3 rounded-full w-fit shadow-sm" style={{ backgroundColor: 'rgba(13,13,13,0.5)', borderColor: 'rgba(200,168,130,0.2)', border: '1px solid', color: 'rgba(200,168,130,0.7)' }}>
                                     <span
                                     className="fa-solid fa-minus cursor-pointer hover:text-yellow-300 transition-colors"
@@ -179,7 +179,6 @@ export default function CartPage() {
                 </p>
                 </div>
             </div>
-
             {/* Summary */}
             <aside className="lg:col-span-4 lg:sticky lg:top-24">
                 <div className="p-8 rounded-3xl border flex flex-col gap-8 shadow-[0px_10px_40px_rgba(0,0,0,0.5)]" style={{ backgroundColor: '#1a1a1a', borderColor: 'rgba(200,168,130,0.2)' }}>
@@ -257,15 +256,14 @@ export default function CartPage() {
                 <label className="text-xs uppercase tracking-[0.25em] mb-3 block" style={{ color: 'rgba(200,168,130,0.6)' }}>
                     Promo Code
                 </label>
-                <div className="flex gap-3">
+                <div className="flex gap-3 flex-wrap ">
                     <input
                     type="text"
                     placeholder="Enter code"
                     className="flex-grow rounded-xl px-4 py-3 outline-none focus:ring-1"
                     style={{ backgroundColor: 'rgba(200,168,130,0.08)', color: '#F0ECE4' }}
                     />
-
-                    <button className="text-white px-5 rounded-xl hover:opacity-90 transition-all" style={{ backgroundColor: '#C8A882', color: '#0D0D0D' }}>
+                    <button className="flex-grow text-white px-5 py-2 rounded-xl hover:opacity-90 transition-all" style={{ backgroundColor: '#C8A882', color: '#0D0D0D' }}>
                     Apply
                     </button>
                 </div>
