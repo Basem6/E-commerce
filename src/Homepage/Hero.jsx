@@ -18,6 +18,7 @@ export default function Hero({smootherRef}) {
     const [showOverlay, setShowOverlay] = useState(() => {
     return !sessionStorage.getItem("hero-animation-done");
 });
+//use REf
     const container = useRef();
     const titleheader= useRef();
     const texthero= useRef();
